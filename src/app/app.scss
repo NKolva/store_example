@@ -1,0 +1,10 @@
+.app {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  font-size: calc(10px + 2vmin);
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none; 
+}
