@@ -1,8 +1,9 @@
 import React from 'react';
 import { Header } from '../features/Header/Header';
+
 import './app.scss';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <div className="app">
       <Header/>

@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { NavigationItem } from './types';
 
-export interface navigationState {
+export interface overallState {
   navigationItem: NavigationItem[];
 }
 
-const initialState: navigationState = {
+const initialState: overallState = {
     navigationItem: [
         {title: 'Smartphones', linkTo: 'se-smartphones'},
         {title: 'Discount', linkTo: 'se-discount'},

@@ -5,13 +5,12 @@ import classnames from 'classnames';
 import './sidebar.scss';
 
 interface Props {
-    transitionValue: boolean;
-    position: string | 'right' | 'left';
+    position: 'right' | 'left';
     title: string;
     onClose?: () => void;
 }
 
-export const Sidebar: React.FC<PropsWithChildren<Props>> = ({ transitionValue, position, onClose, title, children }) => {
+export const Sidebar: React.FC<PropsWithChildren<Props>> = ({ position, onClose, title, children }) => {
 
     const sideBarStyle = classnames('sidebar', {
         'sidebar-right': position === 'right',

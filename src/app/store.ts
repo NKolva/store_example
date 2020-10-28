@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux';
 
-import navigationReducer from '../features/store/navigationStore';
+import overallReducer from '../features/store/overallStore';
 
 const rootReducer = combineReducers({
- navigation: navigationReducer
+ navigation: overallReducer
 });
 
 export const store = createStore(rootReducer);

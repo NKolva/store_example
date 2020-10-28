@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getNavigationItem } from '../store/navigationStore';
+import { getNavigationItem } from '../store/overallSelector'
 
+import { Animation } from '../../components/Animation/Animation';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { Modal } from '../../components/Modal/Modal';
 import { NavigationItem } from '../../components/NavigationItem/NavigationItem';
@@ -11,24 +12,15 @@ import './header.scss';
 
 export const Header: React.FC = () => {
     const navigationItem = useSelector(getNavigationItem);
+    const [showModalTransition, setShowModalTransition] = useState(false);
+    const [showSideTransition, setShowSideTransition] = useState(false);
 
-    const [showSidebar, setShowSidebar] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-    const [sidebarPosition, setSidebarPosition] = useState('');
-    const [sidebarTitle, setSidebarTitle] = useState('');
-
-    const onOpenSidebar = useCallback((position, title) => (): void => {
-        setShowSidebar(true);
-        setSidebarPosition(position);
-        setSidebarTitle(title);
-    }, []);
-
-    const onCloseSidebar = useCallback(() => {
-        setShowSidebar(false);
+    const showSidebarHandler = useCallback(() => {
+        setShowSideTransition(prev => !prev);
     }, []);
 
     const showModalHandler = useCallback(() => {
-        setShowModal(prev => !prev);
+        setShowModalTransition(prev => !prev);
     }, []);
 
     const renderNavigationItem = (): JSX.Element => {
@@ -45,28 +37,23 @@ export const Header: React.FC = () => {
 
     return (
         <>
-            {showSidebar && (
-                <div className="open-animation">
-                    <Sidebar 
-                        transitionValue={showSidebar}
-                        position={sidebarPosition} 
-                        title={sidebarTitle} 
-                        onClose={onCloseSidebar}>
-                            {renderNavigationItem()}
-                    </Sidebar>
-                </div>
-            )}
+            <Animation inValue={showSideTransition} animationType="sidebarLeft">
+                <Sidebar 
+                    position="left" 
+                    title="Menu" 
+                    onClose={showSidebarHandler}>
+                        {renderNavigationItem()}
+                </Sidebar>
+            </Animation>
 
-            {showModal && (
-                <div className="open-animation">
-                    <Modal onClose={showModalHandler}/>
-                </div>
-            )}
+            <Animation inValue={showModalTransition} animationType="modal">
+                <Modal onClose={showModalHandler}/>
+            </Animation>
 
             <div className="header">
                 <div className="header__content">
                     <i  className="material-icons header__icon" 
-                        onClick={onOpenSidebar('left', 'Menu')}>menu</i>
+                        onClick={showSidebarHandler}>menu</i>
                     <div>LOGO</div>
                     <i  className="material-icons header__icon" 
                         onClick={showModalHandler}>shopping_cart</i>
