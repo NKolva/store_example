@@ -6,7 +6,24 @@
   font-size: calc(10px + 2vmin);
   -moz-user-select: none;
   -khtml-user-select: none;
-  user-select: none; 
+  user-select: none;
 
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
 
+  &__categories {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  &__categories-content {
+    padding-top: 50px;
+  }
 }

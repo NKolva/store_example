@@ -1,9 +1,9 @@
 .sidebar, .sidebar-right, .sidebar-left {
-    width: 280px;
-    height: 100%;
+    width: 230px;
     color: #696969;
-    position: absolute;
+    position: fixed;
     top: 0;
+    bottom: 0;
     z-index: 10;
 
     .sidebar-content {

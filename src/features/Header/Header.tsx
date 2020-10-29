@@ -1,7 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getNavigationItem } from '../store/overallSelector'
+import { getNavigationItem } from '../store';
+
+import { isMobile } from '../../utils/device';
 
 import { Animation } from '../../components/Animation/Animation';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
@@ -12,8 +14,11 @@ import './header.scss';
 
 export const Header: React.FC = () => {
     const navigationItem = useSelector(getNavigationItem);
+    
     const [showModalTransition, setShowModalTransition] = useState(false);
     const [showSideTransition, setShowSideTransition] = useState(false);
+
+    const mobile = useMemo(() => isMobile, []);
 
     const showSidebarHandler = useCallback(() => {
         setShowSideTransition(prev => !prev);
@@ -28,7 +33,7 @@ export const Header: React.FC = () => {
             <>
                 {
                     navigationItem.map(item => {
-                        return <NavigationItem key={item.title} title={item.title} />
+                        return <NavigationItem key={item.title} title={item.title} linkTo={item.linkTo} />
                     })
                 }
             </>
@@ -52,8 +57,10 @@ export const Header: React.FC = () => {
 
             <div className="header">
                 <div className="header__content">
-                    <i  className="material-icons header__icon" 
-                        onClick={showSidebarHandler}>menu</i>
+                    {mobile && (
+                        <i  className="material-icons header__icon" 
+                            onClick={showSidebarHandler}>menu</i>
+                    )}
                     <div>LOGO</div>
                     <i  className="material-icons header__icon" 
                         onClick={showModalHandler}>shopping_cart</i>

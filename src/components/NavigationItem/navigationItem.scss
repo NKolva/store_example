@@ -4,13 +4,16 @@
     cursor: pointer;
 
 
-    &__content {
+    &__link {
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 0 0 10px;
         border-bottom: 1px solid #2F4F4F;
+        flex-direction: row;
+        text-decoration: none;
+        color: black;
     }
 
     &__title, &__icon {
