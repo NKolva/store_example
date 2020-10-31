@@ -9,8 +9,8 @@ export interface overallState {
 const initialState: overallState = {
     navigationItem: [
         {title: 'Smartphones', linkTo: "/se-smartphones"},
-        {title: 'Discount', linkTo: "/se-discount"},
         {title: 'Laptops', linkTo: "/se-laptops"},
+        {title: 'Discount', linkTo: "/se-discount"},
     ],
 };
 

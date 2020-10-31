@@ -11,6 +11,7 @@ import { Modal } from '../../components/Modal/Modal';
 import { NavigationItem } from '../../components/NavigationItem/NavigationItem';
 
 import './header.scss';
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
     const navigationItem = useSelector(getNavigationItem);
@@ -61,7 +62,7 @@ export const Header: React.FC = () => {
                         <i  className="material-icons header__icon" 
                             onClick={showSidebarHandler}>menu</i>
                     )}
-                    <div>LOGO</div>
+                    <Link className="header__link" to='/'>LOGO</Link>
                     <i  className="material-icons header__icon" 
                         onClick={showModalHandler}>shopping_cart</i>
                 </div>

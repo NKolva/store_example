@@ -23,14 +23,16 @@ export const Sidebar: React.FC<PropsWithChildren<Props>> = ({ position, onClose,
     });
 
     return (
-        <div className={sideBarStyle}>
-            <div className="sidebar-content">
-                <div className="sidebar__header">
-                    <div className="sidebar__title">{title}</div>
-                    <i onClick={onClose} className={closeIconStyle}>close</i>
-                </div>
-                <div className="sidebar__children" onClick={onClose}>
-                    {children}
+        <div className="sidebar-backdrop">
+            <div className={sideBarStyle}>
+                <div className="sidebar-content">
+                    <div className="sidebar__header">
+                        <div className="sidebar__title">{title}</div>
+                        <i onClick={onClose} className={closeIconStyle}>close</i>
+                    </div>
+                    <div className="sidebar__children" onClick={onClose}>
+                        {children}
+                    </div>
                 </div>
             </div>
         </div>

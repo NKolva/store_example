@@ -1,7 +1,6 @@
 .header {
     height: 50px;
     background-color: #2F4F4F; //darkslategray
-    cursor: default;
     color: white;
     position: fixed;
     top: 0;
@@ -18,5 +17,10 @@
 
     &__icon {
         cursor: pointer;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: #ffffff;
     }
 }

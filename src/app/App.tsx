@@ -1,15 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'; // Redirect
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { isDesktop } from '../utils/device';
-
 import { getNavigationItem } from '../features/store';
 
 import { Header } from '../features/Header/Header';
-import { Smartphones } from '../features/Page/Smartpones/Smartphones';
-import { Laptops } from '../features/Page/Laptops/Laptops';
-import { Discount } from '../features/Page/Discount/Discount';
+import { MainPage, Smartphones, Laptops, Discount } from '../features/Page';
 import { NavigationItem } from '../components/NavigationItem/NavigationItem';
 
 import './app.scss';
@@ -33,9 +30,11 @@ const App = (): JSX.Element => {
           </div>
         )}
         <Switch>
-          <Route path='/se-laptops' component={Laptops}/>
-          <Route path='/se-discount' component={Discount}/>
-          <Route path='/se-smartphones' exact component={Smartphones}/>
+          <Route path='/se-smartphones' component={Smartphones} />
+          <Route path='/se-laptops' component={Laptops} />
+          <Route path='/se-discount' component={Discount} />
+          <Route path='/' exact component={MainPage} />
+          <Redirect to='/' />
         </Switch>
       </div>
     </div>

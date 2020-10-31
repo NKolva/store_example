@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react';
-import { CSSTransition } from 'react-transition-group';
-
 import classnames from 'classnames'
+import { CSSTransition } from 'react-transition-group';
 
 import './animation.scss'
 
