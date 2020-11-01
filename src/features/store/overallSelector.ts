@@ -6,3 +6,5 @@ import { overallState } from './overallStore';
 const getState = (state: RootState): overallState => state.navigation;
 
 export const getNavigationItem = createSelector(getState, (state: overallState) => state.navigationItem);
+
+export const getMobileDevices = createSelector(getState, (state: overallState) => state.mobileDevices);
